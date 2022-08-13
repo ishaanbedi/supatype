@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^1.36.0-next.19",
+    "@supabase/supabase-js": "^1.35.6",
+    "@tailwindcss/forms": "^0.5.2",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",

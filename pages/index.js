@@ -1,11 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import Hero from '../components/Hero'
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
-import Auth from '../components/Auth'
-import Account from '../components/Account'
 
 export default function Home() {
   const [session, setSession] = useState(null)
@@ -26,8 +22,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='relative flex md:block bg-[#1B2430] min-h-screen'>
-        
-        {!session ? <Hero signedIn={false} />  : <Hero signedIn={true} />}
+        {!session ? <Hero signedIn={false} /> : <Hero signedIn={true} />}
       </main>
     </div>
   )

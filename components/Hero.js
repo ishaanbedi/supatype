@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 function HeroSignedIn() {
-    
+
     return (
         <section className="m-auto">
             <Image
@@ -16,22 +16,22 @@ function HeroSignedIn() {
             <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
                 <div className="max-w-xl text-center sm:text-left">
                     <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
-                        Can you type{' '}
+                        Let&apos;s type{' '}
                         <strong className="font-extrabold text-[#D6D5A8] sm:block">
-                            SupaFast?
+                            SupaFast!
                         </strong>
                     </h1>
                     <p className="max-w-lg mt-4 sm:leading-relaxed sm:text-xl text-white">
                         Welcome! You are logged in.
                     </p>
                     <div className="flex flex-wrap gap-4 mt-8 text-center">
-                        <Link href="/profile">
+                        <Link href="/type">
                             <a className="block w-full px-12 py-3 text-sm font-medium text-white rounded shadow bg-[#816797] sm:w-auto focus:outline-none focus:ring">
                                 Start Typing
                             </a>
                         </Link>
-                        <Link href="https://github.com/ishaanbedi/supatype" passHref>
-                            <a className="w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-[#816797] sm:w-auto focus:outline-none focus:ring cursor-ne-resize" target={"_blank"}>
+                        <Link href="/leaderboard" passHref>
+                            <a className="w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-[#816797] sm:w-auto focus:outline-none focus:ring">
                                 Leaderboard
                             </a>
                         </Link>

@@ -1,23 +1,31 @@
 import { useState } from 'react'
 import { supabase } from '../utils/supabaseClient'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Auth() {
+    const notify = () => toast.success('Check your email for a link to sign in!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
-
     const handleLogin = async (email) => {
         try {
             setLoading(true)
             const { error } = await supabase.auth.signIn({ email })
             if (error) throw error
-            alert('Check your email for the login link!')
+            notify();
         } catch (error) {
             alert(error.error_description || error.message)
         } finally {
             setLoading(false)
         }
     }
-
     return (
         <>
             <section className='bg-[#1B2430] min-h-screen flex md:block'>
@@ -57,7 +65,6 @@ export default function Auth() {
                                 </span>
                             </div>
                         </div>
-
                         <div className="flex items-center justify-between">
                             <button
                                 onClick={(e) => {
@@ -67,8 +74,19 @@ export default function Auth() {
                                 className="inline-block px-5 py-3 text-sm font-medium text-white bg-[#816797] rounded-lg"
                                 disabled={loading}
                             >
-                                <span>{loading ? 'Sending' : 'Send magic link'}</span>
+                                <span>{loading ? 'Sending...' : 'Send magic link'}</span>
                             </button>
+                            <ToastContainer
+                                position="top-center"
+                                autoClose={3000}
+                                hideProgressBar
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                            />
                         </div>
                     </form>
                 </div>

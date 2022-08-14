@@ -21,7 +21,7 @@ export default function Auth() {
             if (error) throw error
             notify();
         } catch (error) {
-            alert(error.error_description || error.message)
+            alert("Please provide valid email address.")
         } finally {
             setLoading(false)
         }
@@ -46,6 +46,7 @@ export default function Auth() {
                                     placeholder="Your email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    required
                                 />
                                 <span className="absolute inset-y-0 inline-flex items-center right-4">
                                     <svg

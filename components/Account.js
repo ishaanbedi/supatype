@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
-import { BsSpeedometer } from 'react-icons/bs'
 import ProfileStatsCard from './ProfileStatsCard'
 var userNameLocal = ""
 export default function Account({ session }) {
@@ -12,12 +11,10 @@ export default function Account({ session }) {
     useEffect(() => {
         getProfile()
     }, [session])
-
     async function getProfile() {
         try {
             setLoading(true)
             const user = supabase.auth.user()
-
             let { data, error, status } = await supabase
                 .from('profiles')
                 .select(`username, avgSpeed, bestRecord, completedTests`)
@@ -39,7 +36,6 @@ export default function Account({ session }) {
             setLoading(false)
         }
     }
-
     async function updateProfile({ username }) {
         try {
             setLoading(true)
@@ -63,13 +59,13 @@ export default function Account({ session }) {
             userNameLocal = username
         }
     }
-
     return (
         <section className='bg-[#1B2430] min-h-screen'>
             <div className="text-white ">
                 <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                     <div className="max-w-lg mx-auto text-center">
-                        <h2 className="text-3xl font-bold sm:text-4xl">@{userNameLocal}</h2>
+                        <h1 className='text-3xl font-bold sm:text-4xl my-4 text-[#D6D5A8] '>SupaProfile</h1>
+                        <h2 className="text-2xl sm:text-3xl">@{userNameLocal}</h2>
                     </div>
                     <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
                         <ProfileStatsCard
@@ -79,7 +75,6 @@ export default function Account({ session }) {
                         <ProfileStatsCard
                             title="Best Record"
                             stat={`${best} WPM`}
-
                         />
                         <ProfileStatsCard
                             title="Completed Tests"
@@ -88,12 +83,12 @@ export default function Account({ session }) {
                     </div>
                     <div className="mt-12 text-center">
                         <div className="form-widget">
-                            <div className="relative">
+                            <div className="relative my-4">
                                 <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="email"> Email </label>
                                 <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded  cursor-not-allowed text-black" value={session.user.email} id="email" type="email" />
                             </div>
-                            <div className="relative">
-                                <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="username"> Username </label>
+                            <div className="relative my-4">
+                                <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="username"> Display Name </label>
                                 <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded text-black" id="email" type="email" value={username || ''} onChange={(e) => setUsername(e.target.value)} />
                             </div>
                             <div className='my-4 space-x-4'>
@@ -108,10 +103,9 @@ export default function Account({ session }) {
                                     </span>
 
                                     <span className="text-sm font-medium transition-all group-hover:mr-4">
-                                        {loading ? 'Loading ...' : 'Update Username'}
+                                        {loading ? 'Loading ...' : 'Update Display Name'}
                                     </span>
                                 </button>
-
                                 <button
                                     className="relative inline-flex items-center px-8 py-3 overflow-hidden text-[#816797] border border-current rounded group active:text-indigo-500 focus:outline-none focus:ring" href="/download"
                                     onClick={() => supabase.auth.signOut()}

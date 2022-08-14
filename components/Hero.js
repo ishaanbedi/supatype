@@ -15,7 +15,7 @@ function HeroSignedIn() {
             <div className="hidden sm:block sm:inset-0 sm:absolute sm:bg-gradient-to-r sm:from-[#1B2430] sm:to-transparent"></div>
             <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
                 <div className="max-w-xl text-center sm:text-left">
-                    <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
+                    <h1 className="text-5xl font-extrabold text-white">
                         Let&apos;s type{' '}
                         <strong className="font-extrabold text-[#D6D5A8] sm:block">
                             SupaFast!
@@ -33,6 +33,11 @@ function HeroSignedIn() {
                         <Link href="/leaderboard" passHref>
                             <a className="w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-[#816797] sm:w-auto focus:outline-none focus:ring">
                                 Leaderboard
+                            </a>
+                        </Link>
+                        <Link href="/profile" passHref>
+                            <a className="w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-[#816797] sm:w-auto focus:outline-none focus:ring">
+                                Profile
                             </a>
                         </Link>
                     </div>
@@ -53,7 +58,7 @@ function HeroNotSignedIn() {
             <div className="hidden sm:block sm:inset-0 sm:absolute sm:bg-gradient-to-r sm:from-[#1B2430] sm:to-transparent"></div>
             <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
                 <div className="max-w-xl text-center sm:text-left">
-                    <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
+                    <h1 className="text-5xl font-extrabold text-white">
                         Can you type{' '}
                         <strong className="font-extrabold text-[#D6D5A8] sm:block">
                             SupaFast?

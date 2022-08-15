@@ -44,18 +44,19 @@ function startTypeNotSignedIn(props) {
 }
 function startTypeSignedIn(props) {
     const [loading, setLoading] = useState(true)
-    async function updateProfile(avgSpeedNew, bestNew) {
+    async function updateProfile() {
 
         var completedTestsLocal;
         var bestRecordLocal;
         var totalScoreLocal;
+        var scoresArrayLocal = [];
 
         try {
             setLoading(true)
             const user = supabase.auth.user()
             let { data, error, status } = await supabase
                 .from('profiles')
-                .select(`username, totalScore, bestRecord, completedTests`)
+                .select(`username, totalScore, bestRecord, completedTests, scoresArray`)
                 .eq('id', user.id)
                 .single()
             if (error && status !== 406) {
@@ -65,6 +66,8 @@ function startTypeSignedIn(props) {
                 totalScoreLocal = data.totalScore
                 bestRecordLocal = data.bestRecord
                 completedTestsLocal = data.completedTests
+                scoresArrayLocal = data.scoresArray
+
             }
         } catch (error) {
             alert(error.message)
@@ -74,8 +77,7 @@ function startTypeSignedIn(props) {
         try {
             setLoading(true)
             const user = supabase.auth.user()
-            console.log(totalScoreLocal)
-            console.log(document.querySelector('.timeElapsedSpan').innerHTML)
+            scoresArrayLocal.push(parseInt(document.querySelector('.timeElapsedSpan').innerHTML))
             if (bestRecordLocal < document.querySelector('.timeElapsedSpan').innerHTML) {
                 bestRecordLocal = document.querySelector('.timeElapsedSpan').innerHTML;
             }
@@ -85,6 +87,7 @@ function startTypeSignedIn(props) {
                 totalScore: (totalScoreLocal + parseInt(document.querySelector('.timeElapsedSpan').innerHTML)),
                 completedTests: (completedTestsLocal + 1),
                 bestRecord: bestRecordLocal,
+                scoresArray: scoresArrayLocal,
                 updated_at: new Date(),
             }
             let { error } = await supabase.from('profiles').upsert(updates, {
@@ -127,7 +130,7 @@ function startTypeSignedIn(props) {
             if (activeWordIndex === cloud.current.length - 1) {
                 setStartCounting(false)
                 setUserInput("Completed")
-                updateProfile(56, 3);
+                updateProfile();
             }
             else {
                 setUserInput('')

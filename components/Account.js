@@ -2,9 +2,19 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
 import ProfileStatsCard from './ProfileStatsCard'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 var userNameLocal = ""
 export default function Account({ session }) {
+    const notify = () => toast.success('Display name updated!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
     const [loading, setLoading] = useState(true)
     const [username, setUsername] = useState(null)
     const [average, setAverage] = useState(0)
@@ -59,6 +69,7 @@ export default function Account({ session }) {
         } finally {
             setLoading(false)
             userNameLocal = username
+            notify()
         }
     }
     return (
@@ -68,8 +79,6 @@ export default function Account({ session }) {
                     <div className="max-w-lg mx-auto text-center">
                         <h1 className='text-3xl font-bold sm:text-4xl my-4 text-[#D6D5A8] '>SupaProfile</h1>
                         {userNameLocal !== '' ? <h2 className="text-2xl sm:text-3xl bg-[#51557E]/50 font-bold py-8 rounded-md">@{userNameLocal}</h2> : 'Register a username from below!'}
-
-
                     </div>
                     <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
                         <ProfileStatsCard
@@ -89,7 +98,7 @@ export default function Account({ session }) {
                         <div className="form-widget">
                             <h1 className='text-2xl font-bold mt-8'>Edit details</h1>
                             <div className="relative my-4">
-                                <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="email"> Email (if you want to change your email, please let us know at hi@ishn.xyz) </label>
+                                <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="email"> Email (For security reasons, we have disabled changing email explicitly. If you want to change your email, please let us know at hi@ishn.xyz) </label>
                                 <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded  cursor-not-allowed text-black" value={session.user.email} id="email" type="email" />
                             </div>
                             <div className="relative my-4">
@@ -106,11 +115,11 @@ export default function Account({ session }) {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                         </svg>
                                     </span>
-
                                     <span className="text-sm font-medium transition-all group-hover:mr-4">
                                         {loading ? 'Loading ...' : 'Update'}
                                     </span>
                                 </button>
+
                                 <button
                                     className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-white border border-current rounded group active:text-indigo-500 focus:outline-none focus:ring" href="/download"
                                     onClick={() => supabase.auth.signOut()}
@@ -146,7 +155,17 @@ export default function Account({ session }) {
             </div>
 
 
-
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </section>
     )
 }

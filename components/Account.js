@@ -17,9 +17,10 @@ export default function Account({ session }) {
     });
     const [loading, setLoading] = useState(true)
     const [username, setUsername] = useState(null)
-    const [average, setAverage] = useState(0)
+
     const [best, setBest] = useState(0)
     const [completed, setCompleted] = useState(0)
+    const [totalScore, setTotalScore] = useState(0)
     useEffect(() => {
         getProfile()
     }, [session])
@@ -29,7 +30,7 @@ export default function Account({ session }) {
             const user = supabase.auth.user()
             let { data, error, status } = await supabase
                 .from('profiles')
-                .select(`username, avgSpeed, bestRecord, completedTests`)
+                .select(`username, bestRecord, completedTests, totalScore`)
                 .eq('id', user.id)
                 .single()
             if (error && status !== 406) {
@@ -37,9 +38,9 @@ export default function Account({ session }) {
             }
             if (data) {
                 setUsername(data.username)
-                setAverage(data.avgSpeed)
                 setBest(data.bestRecord)
                 setCompleted(data.completedTests)
+                setTotalScore(data.totalScore)
                 userNameLocal = data.username
             }
         } catch (error) {
@@ -83,7 +84,7 @@ export default function Account({ session }) {
                     <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
                         <ProfileStatsCard
                             title="Average Speed"
-                            stat={`${average} WPM`}
+                            stat={`${((totalScore / completed) || 0).toFixed(2)} WPM`}
                         />
                         <ProfileStatsCard
                             title="Best Record"

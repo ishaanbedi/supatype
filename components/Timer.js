@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import Head from "next/head"
+
 import React, { useRef, useState, useEffect } from "react"
 
 function Timer(props) {
@@ -18,7 +18,7 @@ function Timer(props) {
     return (
         <>
             <p><span className="font-bold">Time:</span> {timeElapsed} seconds</p>
-            <p><span className="font-bold">Speed:</span> {((correctWords / minutes) || 0).toFixed(2)} WPM</p>
+            <p><span className="font-bold">Speed:</span> <span className="timeElapsedSpan">{((correctWords / minutes) || 0).toFixed(2)}</span> WPM</p>
         </>
     )
 }

@@ -45,24 +45,24 @@ function startTypeNotSignedIn(props) {
 function startTypeSignedIn(props) {
     const [loading, setLoading] = useState(true)
     async function updateProfile(avgSpeedNew, bestNew) {
-        var usernameLocal;
+
         var completedTestsLocal;
         var bestRecordLocal;
-        var avgSpeedLocal;
+        var totalScoreLocal;
+
         try {
             setLoading(true)
             const user = supabase.auth.user()
             let { data, error, status } = await supabase
                 .from('profiles')
-                .select(`username, avgSpeed, bestRecord, completedTests`)
+                .select(`username, totalScore, bestRecord, completedTests`)
                 .eq('id', user.id)
                 .single()
             if (error && status !== 406) {
                 throw error
             }
             if (data) {
-                usernameLocal = data.username
-                avgSpeedLocal = data.avgSpeed
+                totalScoreLocal = data.totalScore
                 bestRecordLocal = data.bestRecord
                 completedTestsLocal = data.completedTests
             }
@@ -74,11 +74,17 @@ function startTypeSignedIn(props) {
         try {
             setLoading(true)
             const user = supabase.auth.user()
+            console.log(totalScoreLocal)
+            console.log(document.querySelector('.timeElapsedSpan').innerHTML)
+            if (bestRecordLocal < document.querySelector('.timeElapsedSpan').innerHTML) {
+                bestRecordLocal = document.querySelector('.timeElapsedSpan').innerHTML;
+            }
+
             const updates = {
                 id: user.id,
-                avgSpeed: (avgSpeedLocal)/2,
+                totalScore: (totalScoreLocal + parseInt(document.querySelector('.timeElapsedSpan').innerHTML)),
                 completedTests: (completedTestsLocal + 1),
-                bestRecord: bestNew,
+                bestRecord: bestRecordLocal,
                 updated_at: new Date(),
             }
             let { error } = await supabase.from('profiles').upsert(updates, {

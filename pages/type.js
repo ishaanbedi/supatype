@@ -1,54 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Head from "next/head"
 import React, { useRef, useState, useEffect } from "react"
-const getCloud = () => `oneplus apple motorola samsung nextjs react tailwind supabase supatype macbook phone bed clock speaker laptop`.split(" ")
-import Timer from '../components/Timer'
-import Word from '../components/Word'
 import Type from '../components/Type'
 import { supabase } from '../utils/supabaseClient'
-
 function startType() {
   const [session, setSession] = useState(null)
   useEffect(() => {
     setSession(supabase.auth.session())
-
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
   }, [])
-  const [startCounting, setStartCounting] = useState(false);
-  const [userInput, setUserInput] = useState("");
-  const cloud = useRef(getCloud())
-  const [activeWordIndex, setActiveWordIndex] = useState(0);
-  const [correctWordArray, setCorrectWordArray] = useState([]);
-  var processInput = (value) => {
-    if (activeWordIndex === cloud.current.length) {
-      return
-    }
-    if (!startCounting) {
-      setStartCounting(true)
-    }
-
-    if (value.endsWith(" ")) {
-      if (activeWordIndex === cloud.current.length - 1) {
-        setStartCounting(false)
-        setUserInput("Completed")
-      }
-      else {
-        setUserInput('')
-      }
-      setActiveWordIndex(index => index + 1)
-      setCorrectWordArray(data => {
-        const word = value.trim()
-        const newResult = [...data]
-        newResult[activeWordIndex] = word === cloud.current[activeWordIndex]
-        return newResult
-      })
-    }
-    else {
-      setUserInput(value)
-    }
-  }
   return (
     <>
       <Head>

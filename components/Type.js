@@ -3,10 +3,11 @@ import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from 'next/router'
 import React, { useRef, useState, useEffect } from "react"
-const getCloud = () => `oneplus apple motorola samsung nextjs react tailwind supabase supatype macbook phone bed clock speaker laptop`.split(" ")
+const getCloud = () => `apple oneplus motorola`.split(" ")
 import Timer from '../components/Timer'
 import Word from '../components/Word'
 import { supabase } from '../utils/supabaseClient'
+
 function startTypeNotSignedIn(props) {
     return (
         <>
@@ -42,6 +43,57 @@ function startTypeNotSignedIn(props) {
     )
 }
 function startTypeSignedIn(props) {
+    const [loading, setLoading] = useState(true)
+    async function updateProfile(avgSpeedNew, bestNew) {
+        var usernameLocal;
+        var completedTestsLocal;
+        var bestRecordLocal;
+        var avgSpeedLocal;
+        try {
+            setLoading(true)
+            const user = supabase.auth.user()
+            let { data, error, status } = await supabase
+                .from('profiles')
+                .select(`username, avgSpeed, bestRecord, completedTests`)
+                .eq('id', user.id)
+                .single()
+            if (error && status !== 406) {
+                throw error
+            }
+            if (data) {
+                usernameLocal = data.username
+                avgSpeedLocal = data.avgSpeed
+                bestRecordLocal = data.bestRecord
+                completedTestsLocal = data.completedTests
+            }
+        } catch (error) {
+            alert(error.message)
+        } finally {
+            setLoading(false)
+        }
+        try {
+            setLoading(true)
+            const user = supabase.auth.user()
+            const updates = {
+                id: user.id,
+                avgSpeed: (avgSpeedLocal)/2,
+                completedTests: (completedTestsLocal + 1),
+                bestRecord: bestNew,
+                updated_at: new Date(),
+            }
+            let { error } = await supabase.from('profiles').upsert(updates, {
+                returning: 'minimal'
+            })
+
+            if (error) {
+                throw error
+            }
+        } catch (error) {
+            alert(error.message)
+        } finally {
+            setLoading(false)
+        }
+    }
     const [session, setSession] = useState(null)
     const router = useRouter()
 
@@ -69,6 +121,7 @@ function startTypeSignedIn(props) {
             if (activeWordIndex === cloud.current.length - 1) {
                 setStartCounting(false)
                 setUserInput("Completed")
+                updateProfile(56, 3);
             }
             else {
                 setUserInput('')
@@ -161,6 +214,7 @@ function startTypeSignedIn(props) {
         </>
     )
 }
+
 function Type(props) {
     if (props.signedIn === true) {
         return startTypeSignedIn()

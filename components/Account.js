@@ -4,8 +4,40 @@ import { supabase } from '../utils/supabaseClient'
 import ProfileStatsCard from './ProfileStatsCard'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Line } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
+
+
+
 var userNameLocal = ""
+var scoresArrayLocal = []
 export default function Account({ session }) {
+    const data = {
+        labels: scoresArrayLocal.map((e, i) => { return i + 1 }),
+        datasets: [
+            {
+                label: 'Your statistics so far!',
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(75,192,192,0.4)',
+                borderColor: 'rgba(75,192,192,1)',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(75,192,192,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: scoresArrayLocal
+            }
+        ]
+    };
     const notify = () => toast.success('Display name updated!', {
         position: "top-right",
         autoClose: 3000,
@@ -30,7 +62,7 @@ export default function Account({ session }) {
             const user = supabase.auth.user()
             let { data, error, status } = await supabase
                 .from('profiles')
-                .select(`username, bestRecord, completedTests, totalScore`)
+                .select(`username, bestRecord, completedTests, totalScore, scoresArray`)
                 .eq('id', user.id)
                 .single()
             if (error && status !== 406) {
@@ -42,6 +74,7 @@ export default function Account({ session }) {
                 setCompleted(data.completedTests)
                 setTotalScore(data.totalScore)
                 userNameLocal = data.username
+                scoresArrayLocal = data.scoresArray
             }
         } catch (error) {
             alert(error.message)
@@ -94,6 +127,15 @@ export default function Account({ session }) {
                             title="Completed Tests"
                             stat={`${completed}`}
                         />
+                    </div>
+                    <div className="chart text-center flex flex-col items-center py-12">
+                        <div className='h-96 lg:w-96 md:w-96  w-full'>
+                            <Line
+                                data={data}
+                                width={50}
+                                height={50}
+                            />
+                        </div>
                     </div>
                     <div className="mt-12 text-center">
                         <div className="form-widget">

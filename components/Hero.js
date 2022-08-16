@@ -25,7 +25,7 @@ function HeroSignedIn() {
                         Welcome! You are logged in.
                     </p>
                     <div className="flex flex-wrap gap-4 mt-8 text-center">
-                        <Link href="/type">
+                        <Link href="/instructions">
                             <a className="block w-full px-12 py-3 text-sm font-medium text-white rounded shadow bg-[#816797] sm:w-auto focus:outline-none focus:ring">
                                 Start Typing
                             </a>

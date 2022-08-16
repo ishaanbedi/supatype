@@ -3,11 +3,11 @@ import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from 'next/router'
 import React, { useRef, useState, useEffect } from "react"
-const getCloud = () => `apple oneplus motorola`.split(" ")
+// const getWords = () => `apple oneplus motorola samsung nextjs react tailwind supabase supatype macbook phone bed clock tv`.split(" ")
+import { getWords } from "../utils/words"
 import Timer from '../components/Timer'
 import Word from '../components/Word'
 import { supabase } from '../utils/supabaseClient'
-
 function startTypeNotSignedIn(props) {
     return (
         <>
@@ -115,7 +115,7 @@ function startTypeSignedIn(props) {
     }, [])
     const [startCounting, setStartCounting] = useState(false);
     const [userInput, setUserInput] = useState("");
-    const cloud = useRef(getCloud())
+    const cloud = useRef(getWords())
     const [activeWordIndex, setActiveWordIndex] = useState(0);
     const [correctWordArray, setCorrectWordArray] = useState([]);
     var processInput = (value) => {
@@ -181,9 +181,9 @@ function startTypeSignedIn(props) {
                 <div className="word-ribbon-input text-center w-full px-12">
                     <div className="relative">
                         <input
-                            className="w-full py-3 mt-12 text-sm border-2 border-gray-200 rounded"
+                            className="w-full py-3 mt-12 text-sm border-2 border-gray-200 bg-transparent text-center text-white rounded"
                             type="text"
-                            placeholder="Start typing here..."
+                            placeholder=""
                             value={userInput}
                             onChange={(e) => processInput(e.target.value)}
                         />

@@ -3,7 +3,16 @@ import { supabase } from '../utils/supabaseClient'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Auth() {
-    const notify = () => toast.success('Check your email for a link to sign in!', {
+    const notifyForSuccess = () => toast.success('Check your email for a link to sign in!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+    const notifyForFailure = () => toast.error('There was an error. Try again!', {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: true,
@@ -19,9 +28,9 @@ export default function Auth() {
             setLoading(true)
             const { error } = await supabase.auth.signIn({ email })
             if (error) throw error
-            notify();
+            notifyForSuccess();
         } catch (error) {
-            alert("Please provide valid email address.")
+            notifyForFailure();
         } finally {
             setLoading(false)
         }

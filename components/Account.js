@@ -10,12 +10,13 @@ import { getWords } from '../utils/words';
 
 var userNameLocal = ""
 var scoresArrayLocal = []
+var errorGot = false
 export default function Account({ session }) {
     const data = {
         labels: scoresArrayLocal.map((e, i) => { return i + 1 }),
         datasets: [
             {
-                label: '',
+                label: 'Progress',
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: '#1B2430',
@@ -33,11 +34,21 @@ export default function Account({ session }) {
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: scoresArrayLocal
+                data: scoresArrayLocal,
+
             }
-        ]
+        ],
     };
-    const notify = () => toast.success('Display name updated!', {
+    const notifySuccess = () => toast.success('Display name updated!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+    const notifyError = () => toast.error('Display name already taken. Try again!', {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -95,14 +106,21 @@ export default function Account({ session }) {
             })
 
             if (error) {
-                throw error
+                errorGot = true
+                if (errorGot) {
+
+                    notifyError()
+                }
+            }
+            else {
+                errorGot = false
+                notifySuccess()
             }
         } catch (error) {
-            alert(error.message)
+
         } finally {
             setLoading(false)
-            userNameLocal = username
-            notify()
+            getProfile()
         }
     }
     return (
@@ -128,6 +146,7 @@ export default function Account({ session }) {
                         />
                     </div>
                     <div className="chart text-center flex flex-col items-center py-12">
+                        <h1 className='text-lg font-bold my-4'>Your progress so far!</h1>
                         <div className='h-96 lg:w-96 md:w-96  w-full'>
                             <Line
                                 data={data}
@@ -136,16 +155,16 @@ export default function Account({ session }) {
                             />
                         </div>
                     </div>
-                    <div className="mt-12 text-center">
-                        <div className="form-widget">
-                            <h1 className='text-2xl font-bold mt-8'>Edit details</h1>
+                    <div className="mt-12 ">
+                        <div className="form-widget text-center">
+                            <h1 className='text-2xl font-bold mt-8'>Your details</h1>
                             <div className="relative my-4">
-                                <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="email"> Email (For security reasons, we have disabled changing email explicitly. If you want to change your email, please let us know at hi@ishn.xyz) </label>
-                                <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded  cursor-not-allowed text-black" value={session.user.email} id="email" type="email" />
+                                <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="email"> Email (You cannot change your email) </label>
+                                <input className="text-center w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded  cursor-not-allowed text-black" readOnly value={session.user.email} id="email" type="email" />
                             </div>
                             <div className="relative my-4">
                                 <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="username"> Display Name </label>
-                                <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded text-black" id="email" type="email" defaultValue={username || ''} onChange={(e) => setUsername(e.target.value)} />
+                                <input className="text-center w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded text-black" id="username" type="username" defaultValue={username || ''} onChange={(e) => setUsername(e.target.value)} />
                             </div>
                             <div className='my-4 space-x-4'>
                                 <button

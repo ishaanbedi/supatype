@@ -12,6 +12,8 @@ import { supabase } from '../utils/supabaseClient'
 
 function startTypeSignedIn(props) {
     const [loading, setLoading] = useState(true)
+    const [testStarted, setTestStarted] = useState(false);
+    const [testEnded, setTestEnded] = useState(false);
     async function updateProfile() {
 
         var completedTestsLocal;
@@ -87,6 +89,7 @@ function startTypeSignedIn(props) {
     const [activeWordIndex, setActiveWordIndex] = useState(0);
     const [correctWordArray, setCorrectWordArray] = useState([]);
     var processInput = (value) => {
+        setTestStarted(true)
         if (activeWordIndex === cloud.current.length) {
             return
         }
@@ -97,8 +100,10 @@ function startTypeSignedIn(props) {
         if (value.endsWith(" ")) {
             if (activeWordIndex === cloud.current.length - 1) {
                 setStartCounting(false)
-                setUserInput("Completed")
+                setUserInput("")
+                setTestEnded(true)
                 updateProfile();
+
             }
             else {
                 setUserInput('')
@@ -133,7 +138,7 @@ function startTypeSignedIn(props) {
                             correctWords={correctWordArray.filter(Boolean).length}
                         />
                     </h1>
-                    <div className="word-ribbon-bar bg-[#51557E]/50 rounded-lg lg:text-4xl md:text-3xl sm:text-xl text-2xl  my-8 mb-8 text-center">
+                    <div className="word-ribbon-bar bg-[#51557E]/50 rounded-lg lg:text-3xl md:text-2xl sm:text-lg text-xl  my-8 mb-8 text-center">
                         <p className="text-white py-8">
                             {cloud.current.map((word, index) => {
                                 return <Word
@@ -149,9 +154,10 @@ function startTypeSignedIn(props) {
                 <div className="word-ribbon-input text-center w-full px-12">
                     <div className="relative">
                         <input
-                            className="w-full py-3 mt-12 text-sm border-2 border-gray-200 bg-transparent text-center text-white rounded"
+                            disabled={testEnded}
+                            className="w-full py-3 mt-12 text-sm  bg-transparent text-center text-white rounded"
                             type="text"
-                            placeholder=""
+                            placeholder={testStarted ? " " : "Click here to start typing"}
                             value={userInput}
                             onChange={(e) => processInput(e.target.value)}
                         />

@@ -1,6 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import InstCard from '../components/InstCard'
 function Instructions() {
@@ -11,7 +9,7 @@ function Instructions() {
                     <h2 className="text-3xl font-bold sm:text-4xl">Before you start, </h2>
 
                     <p className="mt-4 text-gray-300">
-                        Here are some instructions for your upcoming test. Please go through them carefully!
+                        Here are some instructions for your upcoming test. <br />Please go through them carefully!
                     </p>
                 </div>
 
@@ -34,7 +32,7 @@ function Instructions() {
                     />
                     <InstCard
                         title="Result"
-                        desc="Your progress will only be registered if you complete your test. Resetting in-between or leaving the test page will not count towards the leader-board."
+                        desc="Your progress will only be registered if you complete your test. Resetting in-between or leaving the test page will not count towards your profile standings."
                         svg={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                         </svg>}
@@ -42,16 +40,16 @@ function Instructions() {
                 </div>
                 <div className="text-center">
 
-                    <button className='text-center lg:mt-28 md:mt-20 mt-16'>
-                        <Link href={'/type'}>
+                    <Link href={'/type'}>
+                        <button className='text-center lg:mt-28 md:mt-20 mt-16'>
                             <a className="inline-block p-3 cursor-pointer bg-gray-900 border border-[#D6D5A8] rounded-full hover:bg-transparent text-shite hover:text-[#D6D5A8] active:text-[#9e9e85] focus:outline-none focus:ring">
                                 <span className="sr-only"> Download </span>
                                 <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
                             </a>
-                        </Link>
-                    </button>
+                        </button>
+                    </Link>
                 </div>
             </div >
         </section >

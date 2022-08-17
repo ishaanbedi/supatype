@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import Head from "next/head"
-import React, { useRef, useState, useEffect } from "react"
+import React from "react"
 function Word(props) {
     const { text, active, correct } = props
     if (correct === true) {
-        return <span className="correct font-bold text-green-400">{text} </span>
+        return <span className="correct font-bold text-green-400 line-through">{text} </span>
     }
     if (correct === false) {
-        return <span className="incorrect font-bold text-red-400">{text} </span>
+        return <span className="incorrect font-bold text-red-400 line-through">{text} </span>
     }
     if (active) {
         return <span className="font-bold active">{text} </span>

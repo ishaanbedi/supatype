@@ -30,11 +30,6 @@ function HeroSignedIn() {
                                 Start Typing
                             </a>
                         </Link>
-                        <Link href="/leaderboard" passHref>
-                            <a className="w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-[#816797] sm:w-auto focus:outline-none focus:ring">
-                                Leaderboard
-                            </a>
-                        </Link>
                         <Link href="/profile" passHref>
                             <a className="w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-[#816797] sm:w-auto focus:outline-none focus:ring">
                                 Profile

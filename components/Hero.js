@@ -16,7 +16,7 @@ function HeroSignedIn() {
             <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
                 <div className="max-w-xl text-center sm:text-left">
                     <h1 className="sm:text-3xl md:text-6xl lg:text-7xl text-2xl leading-tight font-extrabold text-[#E8F1F2]">
-                        Let&apos; type
+                        Let&apos;s type
                         <strong className="font-extrabold sm:block">
                             SupaFast ⚡️
                         </strong>

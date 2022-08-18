@@ -82,7 +82,7 @@ function Instructions() {
                     <div className="text-center text-[#E8F1F2]">
                         <Link href={'/type'}>
                             <button className='text-center lg:mt-28 md:mt-20 mt-16'>
-                                <a className="inline-block p-3 cursor-pointer bg-gray-900 border border-[#E8F1F2] rounded-full hover:bg-transparent text-shite hover:text-[#E8F1F2] active:text-[#9e9e85] focus:outline-none focus:ring">
+                                <a className="inline-block p-3 cursor-pointer bg-gray-900 border border-[#E8F1F2] rounded-full hover:bg-transparent  hover:text-[#E8F1F2] active:text-[#9e9e85] focus:outline-none focus:ring">
                                     <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>

@@ -71,7 +71,7 @@ export default function Account({ session }) {
             setLoading(true)
             const user = supabase.auth.user()
             let { data, error, status } = await supabase
-                .from('profiles')
+                .from('SupaType_BackEnd')
                 .select(`username, bestRecord, completedTests, totalScore, scoresArray`)
                 .eq('id', user.id)
                 .single()
@@ -102,7 +102,7 @@ export default function Account({ session }) {
                 username,
                 updated_at: new Date(),
             }
-            let { error } = await supabase.from('profiles').upsert(updates, {
+            let { error } = await supabase.from('SupaType_BackEnd').upsert(updates, {
                 returning: 'minimal'
             })
 

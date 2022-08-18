@@ -13,7 +13,7 @@ function HeroSignedIn(props) {
             />
             <div className="hidden sm:block sm:inset-0 sm:absolute sm:bg-gradient-to-r sm:from-[#1B2430] sm:to-transparent"></div>
 
-            <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
+            <div className="relative max-w-screen-xl px-4 py-32 mx-auto h-screen items-center flex">
                 <div className="max-w-xl text-center sm:text-left">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}

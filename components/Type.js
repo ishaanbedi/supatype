@@ -46,7 +46,7 @@ function startTypeSignedIn(props) {
             setLoading(true)
             const user = supabase.auth.user()
             let { data, error, status } = await supabase
-                .from('profiles')
+                .from('SupaType_BackEnd')
                 .select(`username, totalScore, bestRecord, completedTests, scoresArray`)
                 .eq('id', user.id)
                 .single()
@@ -81,7 +81,7 @@ function startTypeSignedIn(props) {
                 scoresArray: scoresArrayLocal,
                 updated_at: new Date(),
             }
-            let { error } = await supabase.from('profiles').upsert(updates, {
+            let { error } = await supabase.from('SupaType_BackEnd').upsert(updates, {
                 returning: 'minimal'
             })
 

@@ -243,7 +243,7 @@ export function getWords() {
         "left",
         "late",
         "run",
-        "don't",
+        "dont",
         "while",
         "press",
         "close",

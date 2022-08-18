@@ -12,19 +12,33 @@ function HeroSignedIn(props) {
                 layout='fill'
             />
             <div className="hidden sm:block sm:inset-0 sm:absolute sm:bg-gradient-to-r sm:from-[#1B2430] sm:to-transparent"></div>
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-            >
-                <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
-                    <div className="max-w-xl text-center sm:text-left">
+
+            <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
+                <div className="max-w-xl text-center sm:text-left">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                    >
                         <h1 className="sm:text-3xl md:text-6xl lg:text-7xl text-2xl leading-tight font-extrabold text-[#E8F1F2]">
                             {props.signedIn === true ? "Let's type SupaFast ⚡️" : "Can you type SupaFast?"}
                         </h1>
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                    >
+
                         <p className="max-w-lg mt-4 sm:leading-relaxed sm:text-xl text-[#E8F1F2]">
                             {props.signedIn === true ? "Welcome! You are logged in." : "With SupaType, you can take unlimited typing tests, for free ⚡️"}
                         </p>
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 1 }}
+                    >
                         <div className="flex flex-wrap gap-4 mt-8 text-center">
                             <Link href={props.signedIn === true ? "instructions" : "profile"}>
                                 <motion.button
@@ -47,9 +61,9 @@ function HeroSignedIn(props) {
                                 </motion.button>
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
-            </motion.div>
+            </div>
         </section >
     )
 }

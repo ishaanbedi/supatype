@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import { getWords } from '../utils/words';
+import { motion } from "framer-motion"
 
 var userNameLocal = ""
 var scoresArrayLocal = []
@@ -93,6 +93,7 @@ export default function Account({ session }) {
         }
     }
     async function updateProfile({ username }) {
+        username = username.toLowerCase()
         try {
             setLoading(true)
             const user = supabase.auth.user()
@@ -128,14 +129,22 @@ export default function Account({ session }) {
             <div className="text-[#E8F1F2] ">
                 <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                     <div className="max-w-lg mx-auto text-center">
-                        <h1 className='text-3xl font-bold sm:text-4xl my-6 text-[#E8F1F2] '>SupaProfile</h1>
+                        <motion.button
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                        >
+                            <h1 className='cursor-default text-3xl font-bold sm:text-4xl my-6 text-[#E8F1F2] '>SupaProfile</h1>
+                        </motion.button>
                         {userNameLocal !== '' ? <h2 className="text-2xl sm:text-3xl bg-[#395B64]/50 font-bold py-8 rounded-md">@{userNameLocal}</h2> : 'Register a username from below!'}
                     </div>
                     <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
+
                         <ProfileStatsCard
                             title="Average Speed"
                             stat={`${((totalScore / completed) || 0).toFixed(2)} WPM`}
                         />
+
                         <ProfileStatsCard
                             title="Best Record"
                             stat={`${best} WPM`}
@@ -145,28 +154,31 @@ export default function Account({ session }) {
                             stat={`${completed}`}
                         />
                     </div>
+
                     <div className="chart text-center flex flex-col items-center py-12">
-                        <h1 className='text-lg font-bold my-4'>Your progress so far!</h1>
+                        <h1 className='text-2xl font-bold my-4'>Your progress so far!</h1>
                         <div className='h-96 lg:w-96 md:w-96  w-full'>
+
                             <Line
                                 data={data}
                                 width={50}
                                 height={50}
                             />
+
                         </div>
                     </div>
                     <div className="mt-12 ">
                         <div className="form-widget text-center">
-                            <h1 className='text-2xl font-bold mt-8'>Your details</h1>
-                            <div className="relative my-4">
-                                <label className="block text-xs font-medium text-[#E8F1F2]" htmlFor="email"> Email (You cannot change your email) </label>
-                                <input className="text-center w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded  cursor-not-allowed text-black" readOnly value={session.user.email} id="email" type="email" />
+                            <h1 className='text-3xl font-bold my-16 mt-8'>Your details</h1>
+                            <div className="relative mt-4">
+                                <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="email"> Email (You cannot change your email) </label>
+                                <input className="mt-4 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded  cursor-not-allowed bg-[#395B64]/50" readOnly value={session.user.email} id="email" type="email" />
                             </div>
-                            <div className="relative my-4">
-                                <label className="block text-xs font-medium text-[#E8F1F2]" htmlFor="username"> Display Name </label>
-                                <input className="text-center w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded text-black" id="username" type="username" defaultValue={username || ''} onChange={(e) => setUsername(e.target.value)} />
+                            <div className="relative my-4 mt-8">
+                                <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="username"> Display Name </label>
+                                <input className="mt-4 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded bg-[#395B64]/50" id="username" type="username" defaultValue={username || ''} onChange={(e) => setUsername(e.target.value)} />
                             </div>
-                            <div className='my-4 space-x-4'>
+                            <div className='my-4 mt-12 space-x-4'>
                                 <button
                                     className="relative inline-flex items-center px-8 py-3 overflow-hidden text-[#395B64] hover:text-[#2C3333] bg-[#D5DFE5] rounded group focus:outline-none focus:ring"
                                     onClick={() => updateProfile({ username })}
@@ -182,7 +194,7 @@ export default function Account({ session }) {
                                 </button>
                                 <Link href='/'>
                                     <button
-                                        className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-[#E8F1F2] border border-current rounded group active:text-indigo-500 focus:outline-none focus:ring" href="/download"
+                                        className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-[#E8F1F2] border border-current rounded group active:text-[#D5DFE5] focus:outline-none focus:ring" href="/download"
                                         onClick={() => supabase.auth.signOut()}
                                     >
                                         <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
@@ -197,7 +209,7 @@ export default function Account({ session }) {
                                 </Link>
                                 <Link href='/'>
                                     <button
-                                        className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-[#E8F1F2] border border-current rounded group active:text-indigo-500 focus:outline-none focus:ring" href="/download"
+                                        className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-[#E8F1F2] border border-current rounded group active:text-[#] focus:outline-none focus:ring" href="/download"
                                     >
                                         <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

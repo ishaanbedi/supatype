@@ -9,7 +9,7 @@ function Word(props) {
         return <span className="incorrect font-bold text-red-400 line-through">{text} </span>
     }
     if (active) {
-        return <span className="font-bold active underline underline-offset-4">{text} </span>
+        return <span className="font-bold active">{text} </span>
     }
     return <span>{text} </span>
     Word = React.memo(Word)

@@ -3,18 +3,18 @@ import Link from 'next/link'
 import InstCard from '../components/InstCard'
 function Instructions() {
     return (
-        <section className="text-white flex">
+        <section className="flex">
             <div className="lg:m-auto  max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="max-w-xl">
-                    <h2 className="text-3xl font-bold sm:text-4xl">Before you start, </h2>
+                    <h2 className="text-3xl font-bold sm:text-4xl text-[#E8F1F2]">Before you start, </h2>
 
-                    <p className="mt-4 text-gray-300">
+                    <p className="mt-4 text-[#E8F1F2]">
                         Here are some instructions for your upcoming test. <br />Please go through them carefully!
                     </p>
                 </div>
 
                 <div
-                    className="grid grid-cols-1 gap-8 mt-8 md:gap-12 md:mt-16 md:grid-cols-2 lg:grid-cols-3"
+                    className="grid text-[#E8F1F2] grid-cols-1 gap-8 mt-8 md:gap-12 md:mt-16 md:grid-cols-2 lg:grid-cols-3"
                 >
                     <InstCard
                         title="Time"
@@ -38,7 +38,7 @@ function Instructions() {
                         </svg>}
                     />
                 </div>
-                <div className="text-center">
+                <div className="text-center text-[#E8F1F2]">
 
                     <Link href={'/type'}>
                         <button className='text-center lg:mt-28 md:mt-20 mt-16'>

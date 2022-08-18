@@ -20,16 +20,16 @@ export default function Account({ session }) {
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: '#1B2430',
-                borderColor: '#51557E',
+                borderColor: '#395B64',
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: '#D6D5A8',
+                pointBorderColor: '#E8F1F2',
                 pointBackgroundColor: '#fff',
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: '#816797',
+                pointHoverBackgroundColor: '#E8F1F2',
                 pointHoverBorderColor: 'rgba(220,220,220,1)',
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
@@ -125,11 +125,11 @@ export default function Account({ session }) {
     }
     return (
         <section className='bg-[#1B2430] min-h-screen'>
-            <div className="text-white ">
+            <div className="text-[#E8F1F2] ">
                 <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
                     <div className="max-w-lg mx-auto text-center">
-                        <h1 className='text-3xl font-bold sm:text-4xl my-4 text-[#D6D5A8] '>SupaProfile</h1>
-                        {userNameLocal !== '' ? <h2 className="text-2xl sm:text-3xl bg-[#51557E]/50 font-bold py-8 rounded-md">@{userNameLocal}</h2> : 'Register a username from below!'}
+                        <h1 className='text-3xl font-bold sm:text-4xl my-6 text-[#E8F1F2] '>SupaProfile</h1>
+                        {userNameLocal !== '' ? <h2 className="text-2xl sm:text-3xl bg-[#395B64]/50 font-bold py-8 rounded-md">@{userNameLocal}</h2> : 'Register a username from below!'}
                     </div>
                     <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
                         <ProfileStatsCard
@@ -159,16 +159,16 @@ export default function Account({ session }) {
                         <div className="form-widget text-center">
                             <h1 className='text-2xl font-bold mt-8'>Your details</h1>
                             <div className="relative my-4">
-                                <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="email"> Email (You cannot change your email) </label>
+                                <label className="block text-xs font-medium text-[#E8F1F2]" htmlFor="email"> Email (You cannot change your email) </label>
                                 <input className="text-center w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded  cursor-not-allowed text-black" readOnly value={session.user.email} id="email" type="email" />
                             </div>
                             <div className="relative my-4">
-                                <label className="block text-xs font-medium text-[#D6D5A8]" htmlFor="username"> Display Name </label>
+                                <label className="block text-xs font-medium text-[#E8F1F2]" htmlFor="username"> Display Name </label>
                                 <input className="text-center w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded text-black" id="username" type="username" defaultValue={username || ''} onChange={(e) => setUsername(e.target.value)} />
                             </div>
                             <div className='my-4 space-x-4'>
                                 <button
-                                    className="relative inline-flex items-center px-8 py-3 overflow-hidden text-white bg-[#51557E] rounded group focus:outline-none focus:ring"
+                                    className="relative inline-flex items-center px-8 py-3 overflow-hidden text-[#395B64] hover:text-[#2C3333] bg-[#D5DFE5] rounded group focus:outline-none focus:ring"
                                     onClick={() => updateProfile({ username })}
                                 >
                                     <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
@@ -182,7 +182,7 @@ export default function Account({ session }) {
                                 </button>
                                 <Link href='/'>
                                     <button
-                                        className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-white border border-current rounded group active:text-indigo-500 focus:outline-none focus:ring" href="/download"
+                                        className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-[#E8F1F2] border border-current rounded group active:text-indigo-500 focus:outline-none focus:ring" href="/download"
                                         onClick={() => supabase.auth.signOut()}
                                     >
                                         <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
@@ -197,7 +197,7 @@ export default function Account({ session }) {
                                 </Link>
                                 <Link href='/'>
                                     <button
-                                        className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-white border border-current rounded group active:text-indigo-500 focus:outline-none focus:ring" href="/download"
+                                        className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-[#E8F1F2] border border-current rounded group active:text-indigo-500 focus:outline-none focus:ring" href="/download"
                                     >
                                         <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

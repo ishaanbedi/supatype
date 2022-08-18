@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
-import Type from '../components/Type'
+import { motion } from "framer-motion"
+
 import NotSignedIn from '../components/NotSignedIn'
 import Instructions from '../components/Instructions'
 

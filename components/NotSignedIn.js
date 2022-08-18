@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export default function NotSignedIn(props) {
     return (
@@ -11,6 +12,11 @@ export default function NotSignedIn(props) {
             </Head>
             <section>
                 <section className="text-white bg-[#1B2430] min-h-screen">
+                <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+            >
                     <div className="max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
                         <div className="max-w-3xl mx-auto text-center">
                             <h1 className="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-[#D6D5A8] to-[#816797]">
@@ -30,6 +36,7 @@ export default function NotSignedIn(props) {
                             </div>
                         </div>
                     </div>
+                    </motion.div>
                 </section>
             </section>
         </>

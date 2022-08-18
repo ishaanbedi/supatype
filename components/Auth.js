@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { supabase } from '../utils/supabaseClient'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from "framer-motion"
 
 export default function Auth() {
     const notifyForSuccess = () => toast.success('Check your email for a link to sign in!', {
@@ -72,6 +73,11 @@ export default function Auth() {
                             </div>
 
                             <div>
+                                <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.9 }}
+                            >
+
                                 <button
                                     type="submit"
                                     className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#395B64] bg-[#E8F1F2] hover:text-[#395B64]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -83,8 +89,8 @@ export default function Auth() {
                                 >
                                     <span>{loading ? 'Sending...' : 'Send me a magic link'}</span>
 
-
                                 </button>
+                                    </motion.button>
                             </div>
                         </form>
                     </div>

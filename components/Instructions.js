@@ -1,13 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 import InstCard from '../components/InstCard'
+import { motion } from "framer-motion"
+
 function Instructions() {
     return (
         <section className="flex">
+
             <div className="lg:m-auto  max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="max-w-xl">
                     <h2 className="text-3xl font-bold sm:text-4xl text-[#E8F1F2]">Before you start, </h2>
-
                     <p className="mt-4 text-[#E8F1F2]">
                         Here are some instructions for your upcoming test. <br />Please go through them carefully!
                     </p>
@@ -43,7 +45,6 @@ function Instructions() {
                     <Link href={'/type'}>
                         <button className='text-center lg:mt-28 md:mt-20 mt-16'>
                             <a className="inline-block p-3 cursor-pointer bg-gray-900 border border-[#D6D5A8] rounded-full hover:bg-transparent text-shite hover:text-[#D6D5A8] active:text-[#9e9e85] focus:outline-none focus:ring">
-                                <span className="sr-only"> Download </span>
                                 <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>

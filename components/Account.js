@@ -136,7 +136,7 @@ export default function Account({ session }) {
                         >
                             <h1 className='cursor-default text-3xl font-bold sm:text-4xl my-6 text-[#E8F1F2] '>SupaProfile</h1>
                         </motion.button>
-                        {userNameLocal !== '' ? <h2 className="text-2xl sm:text-3xl bg-[#395B64]/50 font-bold py-8 rounded-md">@{userNameLocal}</h2> : 'Register a username from below!'}
+                        {userNameLocal !== '' ? <h2 className="text-2xl sm:text-3xl bg-[#395B64]/50 font-bold py-8 rounded-md">@{userNameLocal}</h2> : <h2>Register a username from below!</h2>}
                     </div>
                     <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
 
@@ -155,7 +155,7 @@ export default function Account({ session }) {
                         />
                     </div>
 
-                    <div className="chart text-center flex flex-col items-center py-12">
+                    <div className={scoresArrayLocal.length >= 3 ? "chart text-center flex flex-col items-center py-12" : "hidden"}>
                         <h1 className='text-2xl font-bold my-4'>Your progress so far!</h1>
                         <div className='h-96 lg:w-96 md:w-96  w-full'>
 
@@ -169,9 +169,9 @@ export default function Account({ session }) {
                     </div>
                     <div className="mt-12 ">
                         <div className="form-widget text-center">
-                            <h1 className='text-3xl font-bold my-16 mt-8'>Your details</h1>
-                            <div className="relative mt-4">
-                                <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="email"> Email (You cannot change your email) </label>
+                            <h1 className='text-2xl font-bold my-4 mt-8'>Your Information</h1>
+                            <div className="relative">
+                                <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="email"> Email</label>
                                 <input className="mt-4 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded  cursor-not-allowed bg-[#395B64]/50" readOnly value={session.user.email} id="email" type="email" />
                             </div>
                             <div className="relative my-4 mt-8">

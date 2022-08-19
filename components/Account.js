@@ -12,6 +12,10 @@ var userNameLocal = ""
 var scoresArrayLocal = []
 var errorGot = false
 export default function Account({ session }) {
+    function AvoidSpace(event) {
+        var k = event 
+        if (k == 32) return false;
+    }
     const data = {
         labels: scoresArrayLocal.map((e, i) => { return i + 1 }),
         datasets: [
@@ -87,7 +91,7 @@ export default function Account({ session }) {
                 scoresArrayLocal = data.scoresArray
             }
         } catch (error) {
-            
+
         } finally {
             setLoading(false)
         }
@@ -178,7 +182,7 @@ export default function Account({ session }) {
                             </div>
                             <div className="relative my-4 mt-8">
                                 <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="username"> Username </label>
-                                <input className="mt-2 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded bg-[#395B64]/50" id="username" type="username" defaultValue={username || ''} onChange={(e) => { setUsername(e.target.value), setActivateButton(true) }} />
+                                <input className="mt-2 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded bg-[#395B64]/50" id="username" type="username" defaultValue={username || ''} value={username} onChange={(e) => { setUsername(e.target.value.replace(/\s/g, "")), setActivateButton(true) }} />
                             </div>
                             <button
                                 className={activateButton ? "relative inline-flex items-center px-8 py-1 overflow-hidden text-[#395B64] hover:text-[#2C3333] bg-[#D5DFE5] rounded group focus:outline-none focus:ring" : "hidden"}

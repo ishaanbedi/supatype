@@ -2,6 +2,7 @@
     "nuxt.isNuxtApp": false,
     "cSpell.words": [
         "apos",
+        "chartjs",
         "Supa",
         "supabase",
         "Toastify"

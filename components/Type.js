@@ -61,7 +61,7 @@ function startTypeSignedIn(props) {
 
             }
         } catch (error) {
-            console.log(error)
+
         } finally {
             setLoading(false)
         }
@@ -89,7 +89,7 @@ function startTypeSignedIn(props) {
                 throw error
             }
         } catch (error) {
-            console.log(error.message)
+
         } finally {
             setLoading(false)
         }
@@ -218,15 +218,15 @@ function startTypeSignedIn(props) {
                         <button className="relative inline-flex items-center px-8 py-3 overflow-hidden text-[#D5DFE5] bg-[#395B64] rounded group  focus:outline-none focus:ring"
                             onClick={() => { router.reload(window.location.pathname) }}
                         >
-                            
-                                <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                    </svg>
-                                </span>
-                                <span className="text-sm font-medium transition-all group-hover:mr-4">
-                                    Restart
-                                </span>
+
+                            <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                            </span>
+                            <span className="text-sm font-medium transition-all group-hover:mr-4">
+                                Restart
+                            </span>
 
                         </button>
                         <motion.button

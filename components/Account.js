@@ -87,7 +87,7 @@ export default function Account({ session }) {
                 scoresArrayLocal = data.scoresArray
             }
         } catch (error) {
-            alert(error.message)
+            
         } finally {
             setLoading(false)
         }

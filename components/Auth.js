@@ -60,7 +60,7 @@ export default function Auth () {
                 <div>
                   <label htmlFor='email-address' className='sr-only'>
                     Email address
-                                    </label>
+                  </label>
                   <input
                     className='inputField w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm'
                     type='email'

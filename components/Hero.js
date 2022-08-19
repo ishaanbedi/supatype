@@ -8,6 +8,7 @@ import Image from 'next/image'
 function HeroSignedIn(props) {
     const [session, setSession] = useState(null)
     const [newUser, setNewUser] = useState(false);
+    const [userName, setUserName] = useState("");
 
     useEffect(() => {
         setSession(supabase.auth.session())
@@ -20,13 +21,22 @@ function HeroSignedIn(props) {
         getProfile()
     }, [session])
     async function getProfile() {
-        const user = supabase.auth.user()
-        let { data, error, status } = await supabase
-            .from('SupaType_BackEnd')
-            .select(`*`)
-            .eq('id', user.id)
-        if (Object.keys(data).length === 0) {
-            setNewUser(true)
+        try {
+
+            const user = supabase.auth.user()
+            let { data, error, status } = await supabase
+                .from('SupaType_BackEnd')
+                .select(`*`)
+                .eq('id', user.id)
+            if (Object.keys(data).length === 0) {
+                setNewUser(true)
+            }
+            else{
+                setUserName(data[0].username)
+            }
+        }
+        catch (error) {
+
         }
 
 
@@ -51,7 +61,7 @@ function HeroSignedIn(props) {
                             transition={{ duration: 0.5, delay: 0.8 }}
                         >
                             <p className="max-w-lg mt-4 sm:leading-relaxed sm:text-xl text-[#E8F1F2]">
-                                {props.signedIn === true ? "Welcome! You are logged in." : "With SupaType, you can take unlimited typing tests, for free ⚡️"}
+                                {props.signedIn === true ? `Welcome, @${userName}!` : "With SupaType, you can take unlimited typing tests, for free ⚡️"}
                             </p>
                         </motion.div>
                         <motion.div
@@ -59,7 +69,7 @@ function HeroSignedIn(props) {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 1 }}
                         >
-                            <div className="flex flex-wrap gap-4 mt-8 text-center">
+                            <div className="flex flex-row gap-4 mt-8 text-center">
                                 <Link href={props.signedIn === true ? "instructions" : "profile"}>
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
@@ -109,7 +119,7 @@ function HeroSignedIn(props) {
                             transition={{ duration: 0.5, delay: 0.8 }}
                         >
                             <p className="max-w-lg mt-4 sm:leading-relaxed sm:text-xl text-[#E8F1F2]">
-                                Before you can begin, please setup a username from the <Link href='/profile'><span className='underline decoration-dotted underline-offset-4 cursor-pointer'>profile</span></Link> section!
+                                Before you can start taking tests, please setup a username from the <Link href='/profile'><span className='underline decoration-dotted underline-offset-4 cursor-pointer'>profile</span></Link> section!
                             </p>
                         </motion.div>
                         <motion.div

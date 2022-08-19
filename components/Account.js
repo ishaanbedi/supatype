@@ -59,7 +59,7 @@ export default function Account({ session }) {
     });
     const [loading, setLoading] = useState(true)
     const [username, setUsername] = useState(null)
-
+    const [activateButton, setActivateButton] = useState(false);
     const [best, setBest] = useState(0)
     const [completed, setCompleted] = useState(0)
     const [totalScore, setTotalScore] = useState(0)
@@ -122,6 +122,7 @@ export default function Account({ session }) {
         } finally {
             setLoading(false)
             getProfile()
+            setActivateButton(false)
         }
     }
     return (
@@ -168,30 +169,31 @@ export default function Account({ session }) {
                         </div>
                     </div>
                     <div className="mt-12 ">
+                        <p className={scoresArrayLocal.length >= 3 ? "hidden" : "text-center"}><span className={userNameLocal !== username ? "hidden" : ""}>{userNameLocal !== username ? "" : "Complete at least 3 typing tests to unlock visualizations of your progress! "}</span></p>
                         <div className="form-widget text-center">
-                            <h1 className='text-2xl font-bold my-4 mt-8'>Your Information</h1>
+                            <h1 className='text-2xl font-bold my-4 mt-8 underline underline-offset-8 decoration-dotted'>Your Information</h1>
                             <div className="relative">
                                 <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="email"> Email</label>
-                                <input className="mt-4 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded  cursor-not-allowed bg-[#395B64]/50" readOnly value={session.user.email} id="email" type="email" />
+                                <input className="mt-2 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded  cursor-not-allowed bg-[#395B64]/50" readOnly value={session.user.email} id="email" type="email" />
                             </div>
                             <div className="relative my-4 mt-8">
-                                <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="username"> Display Name </label>
-                                <input className="mt-4 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded bg-[#395B64]/50" id="username" type="username" defaultValue={username || ''} onChange={(e) => setUsername(e.target.value)} />
+                                <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="username"> Username </label>
+                                <input className="mt-2 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded bg-[#395B64]/50" id="username" type="username" defaultValue={username || ''} onChange={(e) => { setUsername(e.target.value), setActivateButton(true) }} />
                             </div>
+                            <button
+                                className={activateButton ? "relative inline-flex items-center px-8 py-1 overflow-hidden text-[#395B64] hover:text-[#2C3333] bg-[#D5DFE5] rounded group focus:outline-none focus:ring" : "hidden"}
+                                onClick={() => updateProfile({ username })}
+                            >
+                                <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
+                                    <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </span>
+                                <span className="text-sm font-medium transition-all group-hover:mr-4" >
+                                    {loading ? 'Loading ...' : 'Update'}
+                                </span>
+                            </button>
                             <div className='my-4 mt-12 space-x-4'>
-                                <button
-                                    className="relative inline-flex items-center px-8 py-3 overflow-hidden text-[#395B64] hover:text-[#2C3333] bg-[#D5DFE5] rounded group focus:outline-none focus:ring"
-                                    onClick={() => updateProfile({ username })}
-                                >
-                                    <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
-                                        <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
-                                    </span>
-                                    <span className="text-sm font-medium transition-all group-hover:mr-4">
-                                        {loading ? 'Loading ...' : 'Update'}
-                                    </span>
-                                </button>
                                 <Link href='/'>
                                     <button
                                         className="relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-[#E8F1F2] border border-current rounded group active:text-[#D5DFE5] focus:outline-none focus:ring" href="/download"

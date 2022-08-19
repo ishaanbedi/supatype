@@ -14,7 +14,7 @@ function Instructions() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                        <h2 className="text-3xl font-bold sm:text-4xl text-[#E8F1F2]">Before you start, </h2>
+                        <h2 className="text-3xl font-bold sm:text-4xl text-[#E8F1F2]">Before you start! </h2>
                     </motion.div>
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
@@ -22,7 +22,7 @@ function Instructions() {
                         transition={{ duration: 0.5, delay: 0.6 }}
                     >
                         <p className="mt-2 text-[#E8F1F2]">
-                            here are some instructions for your upcoming test. <br />Please go through them carefully!
+                            Here are some instructions for your upcoming test. <br />Please go through them carefully!
                         </p>
                     </motion.div>
                 </div>
@@ -36,8 +36,8 @@ function Instructions() {
                         transition={{ duration: 0.5, delay: 0.8 }}
                     >
                         <InstCard
-                            title="Time"
-                            desc="There is no time limit to complete, however your final result highly depends on how much time you'll take. The less time you'll take, the better result you'll get."
+                            title="Time to complete!"
+                            desc="There is no time limit involved, however your final result highly depends on how much time you'll take. The less time you'll take, the better result you'll get."
                             svg={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>}
@@ -50,7 +50,7 @@ function Instructions() {
                     >
 
                         <InstCard
-                            title="Words"
+                            title="Word limit"
                             desc="You'll be presented with 15 random words that you'll have to type! The more accurately and fast you type these words, the better your result will be."
                             svg={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />

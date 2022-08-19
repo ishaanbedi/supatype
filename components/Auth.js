@@ -59,7 +59,7 @@ export default function Auth () {
                 <div>
                   <label htmlFor='email-address' className='sr-only'>
                     Email address
-                                    </label>
+                  </label>
                   <input
                     className='inputField w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm'
                     type='email'
@@ -81,9 +81,9 @@ export default function Auth () {
                     type='submit'
                     className='group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#395B64] bg-[#E8F1F2] hover:text-[#395B64]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D5DFE5]'
                     onClick={(e) => {
-                        e.preventDefault()
-                        handleLogin(email)
-                      }}
+                      e.preventDefault()
+                      handleLogin(email)
+                    }}
                     disabled={loading}
                   >
                     <span>{loading ? 'Sending...' : 'Send me a magic link'}</span>

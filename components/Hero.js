@@ -122,7 +122,7 @@ function HeroSignedIn (props) {
                   >
                     <a className='block w-full px-12 py-3 text-sm font-medium text-[#395B64] hover:text-[#2C3333] rounded shadow bg-[#D5DFE5] sm:w-auto focus:outline-none focus:ring'>
                       Profile
-                                        </a>
+                    </a>
                   </motion.button>
                 </Link>
               </div>

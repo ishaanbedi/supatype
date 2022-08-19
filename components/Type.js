@@ -178,11 +178,11 @@ function startTypeSignedIn (props) {
                 {cloud.current.map((word, index) => {
                   return (
                     <Word
-                        text={word}
-                        key={index}
-                        active={index === activeWordIndex}
-                        correct={correctWordArray[index]}
-                      />
+                      text={word}
+                      key={index}
+                      active={index === activeWordIndex}
+                      correct={correctWordArray[index]}
+                    />
                   )
                 })}
               </p>
@@ -238,13 +238,13 @@ function startTypeSignedIn (props) {
                 >
                   <span className='absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4'>
                     <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-                        <path strokeLinecap='round' strokeLinejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' />
-                      </svg>
+                      <path strokeLinecap='round' strokeLinejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' />
+                    </svg>
                   </span>
 
                   <span className='text-sm font-medium transition-all group-hover:mr-4'>
                     Home
-                                    </span>
+                  </span>
                 </button>
               </Link>
             </motion.button>
@@ -263,56 +263,56 @@ function startTypeSignedIn (props) {
                   <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#395B64] outline-none focus:outline-none'>
 
                     <div className='flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t'>
-                        <h3 className='text-3xl font-semibold text-[#E8F1F2]'>
-                            {!zeroSpeed ? 'Test Completed!' : 'Oops!'}
-                          </h3>
-                        <button
-                            className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
-                            onClick={() => setShowModal(false)}
-                          >
-                            <span className='bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none'>
-                                ×
-                                            </span>
-                          </button>
-                      </div>
+                      <h3 className='text-3xl font-semibold text-[#E8F1F2]'>
+                        {!zeroSpeed ? 'Test Completed!' : 'Oops!'}
+                      </h3>
+                      <button
+                        className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
+                        onClick={() => setShowModal(false)}
+                      >
+                        <span className='bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none'>
+                          ×
+                        </span>
+                      </button>
+                    </div>
 
                     <div className='relative p-6 flex-auto'>
-                        <p className='my-4 text-gray-200 text-lg leading-relaxed'>
-                            {!zeroSpeed ? 'Well done!' : "That's not we expected!"}
-                            <br />
-                            {!zeroSpeed ? notZeroMsg() : ZeroMsg()}
-                          </p>
-                      </div>
+                      <p className='my-4 text-gray-200 text-lg leading-relaxed'>
+                        {!zeroSpeed ? 'Well done!' : "That's not we expected!"}
+                        <br />
+                        {!zeroSpeed ? notZeroMsg() : ZeroMsg()}
+                      </p>
+                    </div>
 
                     <div className='flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b'>
-                        <Link href='/profile'>
-                            <button
-                                className='text-[#D5DFE5] background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                                type='button'
-                                onClick={() => setShowModal(false)}
-                              >
-
-                                <a className='relative inline-flex items-center px-8 py-3 overflow-hidden text-[#395B64] bg-[#D5DFE5] rounded group focus:outline-none focus:ring'>
-                  <span className='absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4'>
-                                    <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth={2}>
-                                        <path strokeLinecap='round' strokeLinejoin='round' d='M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z' />
-                                      </svg>
-                                  </span>
-
-                  <span className='text-sm font-medium transition-all group-hover:mr-4'>
-                                    Profile
-                                                    </span>
-                </a>
-                              </button>
-                          </Link>
+                      <Link href='/profile'>
                         <button
-                            className='text-[#D5DFE5] font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none  focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                            type='button'
-                            onClick={() => { setShowModal(false); setTestEnded(false) }}
-                          >
-                                          Close
-                          </button>
-                      </div>
+                          className='text-[#D5DFE5] background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                          type='button'
+                          onClick={() => setShowModal(false)}
+                        >
+
+                          <a className='relative inline-flex items-center px-8 py-3 overflow-hidden text-[#395B64] bg-[#D5DFE5] rounded group focus:outline-none focus:ring'>
+                            <span className='absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4'>
+                              <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth={2}>
+                                <path strokeLinecap='round' strokeLinejoin='round' d='M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z' />
+                              </svg>
+                            </span>
+
+                            <span className='text-sm font-medium transition-all group-hover:mr-4'>
+                              Profile
+                            </span>
+                          </a>
+                        </button>
+                      </Link>
+                      <button
+                        className='text-[#D5DFE5] font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none  focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                        type='button'
+                        onClick={() => { setShowModal(false); setTestEnded(false) }}
+                      >
+                        Close
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

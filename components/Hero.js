@@ -143,7 +143,6 @@ function HeroSignedIn(props) {
     return (
         <section className="m-auto">
             <Image
-                className=""
                 src="/images/bg.png"
                 alt="Typing on a keyboard"
                 layout='fill'

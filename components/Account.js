@@ -189,13 +189,13 @@ export default function Account ({ session }) {
                     onClick={() => supabase.auth.signOut()}
                   >
                     <span className='absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4'>
-                        <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-                            <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
-                          </svg>
-                      </span>
+                      <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                        <path strokeLinecap='round' strokeLinejoin='round' d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1' />
+                      </svg>
+                    </span>
                     <span className='text-sm font-medium transition-all group-hover:mr-4'>
-                        Sign Out
-                                        </span>
+                      Sign Out
+                    </span>
                   </button>
                 </Link>
                 <Link href='/'>
@@ -203,13 +203,13 @@ export default function Account ({ session }) {
                     className='relative inline-flex items-center px-8 py-3 mt-2 overflow-hidden text-[#E8F1F2] border border-current rounded group active:text-[#] focus:outline-none focus:ring' href='/download'
                   >
                     <span className='absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4'>
-                        <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
-                            <path strokeLinecap='round' strokeLinejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' />
-                          </svg>
-                      </span>
+                      <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2'>
+                        <path strokeLinecap='round' strokeLinejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' />
+                      </svg>
+                    </span>
                     <span className='text-sm font-medium transition-all group-hover:mr-4'>
-                        Home
-                                        </span>
+                      Home
+                    </span>
                   </button>
                 </Link>
               </div>

@@ -24,13 +24,13 @@ export default function NotSignedIn (props) {
                 <div className='flex flex-wrap justify-center gap-4 mt-8'>
                   <Link href='/profile'>
                     <a className='block w-full px-12 py-3 text-sm font-medium text-white bg-[#395B64] border border-[#395B64] rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring'>
-                        Sign In
-                                        </a>
+                      Sign In
+                    </a>
                   </Link>
                   <Link href='/'>
                     <a className='block w-full px-12 py-3 text-sm font-medium text-white border border-[#395B64] rounded sm:w-auto hover:bg-[#395B64] active:bg-[#395B64] focus:outline-none focus:ring'>
-                        Home
-                                        </a>
+                      Home
+                    </a>
                   </Link>
                 </div>
               </div>

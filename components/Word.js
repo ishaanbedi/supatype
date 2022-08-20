@@ -2,7 +2,7 @@
 function Word(props) {
     const { text, active, correct } = props
     if (correct === true) {
-        return <span className="correct font-bold  text-green-700">{text} </span>
+        return <span className="correct font-bold  text-green-500">{text} </span>
     }
     if (correct === false) {
         return <span className="incorrect font-bold text-red-400">{text} </span>

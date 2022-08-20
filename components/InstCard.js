@@ -1,5 +1,4 @@
 import React from 'react'
-
 function InstCard(props) {
     return (
         <>

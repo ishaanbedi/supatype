@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import InstCard from '../components/InstCard'
 import { motion } from "framer-motion"
-
 function Instructions() {
     return (
         <section className="flex">

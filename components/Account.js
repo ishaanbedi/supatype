@@ -7,15 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { motion } from "framer-motion"
-
 var userNameLocal = ""
 var scoresArrayLocal = []
 var errorGot = false
 export default function Account({ session }) {
-    function AvoidSpace(event) {
-        var k = event 
-        if (k == 32) return false;
-    }
     const data = {
         labels: scoresArrayLocal.map((e, i) => { return i + 1 }),
         datasets: [
@@ -39,7 +34,6 @@ export default function Account({ session }) {
                 pointRadius: 1,
                 pointHitRadius: 10,
                 data: scoresArrayLocal,
-
             }
         ],
     };
@@ -62,7 +56,7 @@ export default function Account({ session }) {
         progress: undefined,
     });
     const [loading, setLoading] = useState(true)
-    const [username, setUsername] = useState(null)
+    const [username, setUsername] = useState('')
     const [activateButton, setActivateButton] = useState(false);
     const [best, setBest] = useState(0)
     const [completed, setCompleted] = useState(0)
@@ -91,7 +85,6 @@ export default function Account({ session }) {
                 scoresArrayLocal = data.scoresArray
             }
         } catch (error) {
-
         } finally {
             setLoading(false)
         }
@@ -109,11 +102,9 @@ export default function Account({ session }) {
             let { error } = await supabase.from('SupaType_BackEnd').upsert(updates, {
                 returning: 'minimal'
             })
-
             if (error) {
                 errorGot = true
                 if (errorGot) {
-
                     notifyError()
                 }
             }
@@ -144,12 +135,10 @@ export default function Account({ session }) {
                         {userNameLocal !== '' ? <h2 className="text-2xl sm:text-3xl bg-[#395B64]/50 font-bold py-8 rounded-md">@{userNameLocal}</h2> : <h2>Register a username from below!</h2>}
                     </div>
                     <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
-
                         <ProfileStatsCard
                             title="Average Speed"
                             stat={`${((totalScore / completed) || 0).toFixed(2)} WPM`}
                         />
-
                         <ProfileStatsCard
                             title="Best Record"
                             stat={`${best} WPM`}
@@ -159,17 +148,14 @@ export default function Account({ session }) {
                             stat={`${completed}`}
                         />
                     </div>
-
                     <div className={scoresArrayLocal.length >= 3 ? "chart text-center flex flex-col items-center py-12" : "hidden"}>
                         <h1 className='text-2xl font-bold my-4'>Your progress so far!</h1>
                         <div className='h-96 lg:w-96 md:w-96  w-full'>
-
                             <Line
                                 data={data}
                                 width={50}
                                 height={50}
                             />
-
                         </div>
                     </div>
                     <div className="mt-12 ">
@@ -182,7 +168,7 @@ export default function Account({ session }) {
                             </div>
                             <div className="relative my-4 mt-8">
                                 <label className="block text-lg font-bold text-[#E8F1F2]" htmlFor="username"> Username </label>
-                                <input className="mt-2 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded bg-[#395B64]/50" id="username" type="username" defaultValue={username || ''} value={username} onChange={(e) => { setUsername(e.target.value.replace(/\s/g, "")), setActivateButton(true) }} />
+                                <input className="mt-2 text-center border-none text-[#E8F1F2]  p-3 text-sm border-2 border-gray-200 rounded bg-[#395B64]/50" id="username" type="username" value={username || ""} onChange={(e) => { setUsername(e.target.value.replace(/\s/g, "")), setActivateButton(true) }} />
                             </div>
                             <button
                                 className={activateButton ? "relative inline-flex items-center px-8 py-1 overflow-hidden text-[#395B64] hover:text-[#2C3333] bg-[#D5DFE5] rounded group focus:outline-none focus:ring" : "hidden"}
@@ -222,7 +208,6 @@ export default function Account({ session }) {
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                             </svg>
                                         </span>
-
                                         <span className="text-sm font-medium transition-all group-hover:mr-4">
                                             Home
                                         </span>
@@ -233,8 +218,6 @@ export default function Account({ session }) {
                     </div>
                 </div>
             </div>
-
-
             <ToastContainer
                 position="top-right"
                 autoClose={3000}

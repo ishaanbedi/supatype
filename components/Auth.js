@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { supabase } from '../utils/supabaseClient'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { motion } from "framer-motion"
-
 export default function Auth() {
     const notifyForSuccess = () => toast.success('Check your email for a link to sign in!', {
         position: "top-right",
@@ -37,7 +35,6 @@ export default function Auth() {
             setLoading(false)
         }
     }
-
     return (
         <>
              <section className='bg-[#1B2430] min-h-screen md:block'>
@@ -71,7 +68,6 @@ export default function Auth() {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <button
                                     type="submit"
@@ -83,15 +79,12 @@ export default function Auth() {
                                     disabled={loading}
                                 >
                                     <span>{loading ? 'Sending...' : 'Send me a magic link'}</span>
-
-
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </section>
-
             <ToastContainer
                 position="top-center"
                 autoClose={3000}

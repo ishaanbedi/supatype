@@ -9,7 +9,6 @@ function HeroSignedIn(props) {
     const [session, setSession] = useState(null)
     const [newUser, setNewUser] = useState(false);
     const [userName, setUserName] = useState("");
-
     useEffect(() => {
         setSession(supabase.auth.session())
 
@@ -36,10 +35,7 @@ function HeroSignedIn(props) {
             }
         }
         catch (error) {
-
         }
-
-
     }
     function oldUserText(props) {
         return (
@@ -94,8 +90,6 @@ function HeroSignedIn(props) {
                         </motion.div>
                     </div>
                 </div>
-
-
             </>
         )
     }
@@ -156,8 +150,6 @@ function HeroSignedIn(props) {
             />
             <div className="hidden sm:block sm:inset-0 sm:absolute sm:bg-gradient-to-r sm:from-[#1B2430] sm:to-transparent"></div>
             {newUser ? newUserText(props) : oldUserText(props)}
-
-
         </section >
     )
 }

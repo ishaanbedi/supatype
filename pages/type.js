@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import Head from "next/head"
-import React, { useState, useEffect } from "react"
+import Head from 'next/head'
+import React, { useState, useEffect } from 'react'
 import Type from '../components/Type'
 import { supabase } from '../utils/supabaseClient'
-function startType() {
+function startType () {
   const [session, setSession] = useState(null)
   useEffect(() => {
     setSession(supabase.auth.session())
@@ -16,7 +16,7 @@ function startType() {
       <Head>
         <title>New Typing Session | SupaType ⚡️</title>
       </Head>
-      {!session ? <Type signedIn={false} /> : <Type signedIn={true} />}
+      {!session ? <Type signedIn={false} /> : <Type signedIn />}
     </>
   )
 }

@@ -4,9 +4,9 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      "ishaanbedi.in"
-    ],
-  },
+      'ishaanbedi.in'
+    ]
+  }
 
 }
 

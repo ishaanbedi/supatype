@@ -1,8 +1,8 @@
 
-import { getWords } from "../../utils/words"
+import { getWords } from '../../utils/words'
 
 console.log(getWords)
 
-export default function handler(req, res) {
+export default function handler (req, res) {
   res.status(200).json(getWords())
 }

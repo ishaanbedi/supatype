@@ -78,7 +78,7 @@ export default function Account({ session }) {
             }
             if (data) {
                 setUsername(data.username)
-                setBest(data.bestRecord)
+                setBest(data.scoresArray.reduce((a, b) => a > b ? a : b, 0))
                 setCompleted(data.completedTests)
                 setTotalScore(data.totalScore)
                 userNameLocal = data.username

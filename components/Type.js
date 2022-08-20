@@ -52,6 +52,7 @@ function startTypeSignedIn() {
                 throw error
             }
             if (data) {
+                console.log(data)
                 totalScoreLocal = data.totalScore
                 bestRecordLocal = data.bestRecord
                 completedTestsLocal = data.completedTests
@@ -64,15 +65,17 @@ function startTypeSignedIn() {
         try {
             const user = supabase.auth.user()
             scoresArrayLocal.push(parseInt(document.querySelector('.scoreSpan').innerHTML))
+            console.log(document.querySelector('.scoreSpan').innerHTML)
             if (bestRecordLocal < document.querySelector('.scoreSpan').innerHTML) {
                 bestRecordLocal = document.querySelector('.scoreSpan').innerHTML;
             }
+
             const updates = {
                 id: user.id,
                 totalScore: (totalScoreLocal + parseInt(document.querySelector('.scoreSpan').innerHTML)),
                 completedTests: (completedTestsLocal + 1),
-                bestRecord: bestRecordLocal,
                 scoresArray: scoresArrayLocal,
+                bestRecord: Math.max(scoresArrayLocal),
                 updated_at: new Date(),
             }
             let { error } = await supabase.from('SupaType_BackEnd').upsert(updates, {

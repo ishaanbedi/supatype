@@ -147,7 +147,7 @@ function HeroSignedIn(props) {
                 alt="Typing on a keyboard"
                 layout='fill'
             />
-            <div className="hidden sm:block sm:inset-0 sm:absolute sm:bg-gradient-to-r sm:from-[#1B2430] sm:to-transparent"></div>
+            <div className="hidden sm:block sm:inset-0 sm:absolute sm:bg-gradient-to-r sm:from-[#1B2430] sm:to-transparent" />
             {newUser ? newUserText(props) : oldUserText(props)}
         </section >
     )

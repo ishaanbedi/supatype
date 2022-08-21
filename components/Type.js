@@ -25,7 +25,7 @@ function startTypeSignedIn() {
             <>
                 You took <span className="underline underline-offset-4 font-bold">{document.querySelector('.timeSpan').innerHTML} seconds</span> to complete the test!
                 <br />
-                Your speed for the test was <span className="underline underline-offset-4 font-bold">{document.querySelector('.scoreSpan').innerHTML} Words Per Minute</span>.
+                Your speed for the test was <span className="underline underline-offset-4 font-bold">{document.querySelector('.scoreSpan').innerHTML}</span>.
             </>
         )
     }

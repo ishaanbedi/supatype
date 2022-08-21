@@ -9,13 +9,17 @@ import Timer from '../components/Timer'
 import Word from '../components/Word'
 import NotSignedIn from '../components/NotSignedIn'
 import { supabase } from '../utils/supabaseClient'
+import Confetti from 'react-confetti'
+
 
 function startTypeSignedIn() {
+
     const [showModal, setShowModal] = useState(false);
     const [zeroSpeed, setZeroSpeed] = useState(false);
     const [testStarted, setTestStarted] = useState(false);
     const [testEnded, setTestEnded] = useState(false);
     const [session, setSession] = useState(null)
+    const [runConfetti, setRunConfetti] = useState(false)
     var notZeroMsg = () => {
         return (
             <>
@@ -37,6 +41,7 @@ function startTypeSignedIn() {
             setZeroSpeed(true)
             return
         }
+        setRunConfetti(!zeroSpeed)
         var completedTestsLocal;
         var bestRecordLocal;
         var totalScoreLocal;
@@ -61,7 +66,6 @@ function startTypeSignedIn() {
 
             }
         } catch (error) {
-            console.log(error)
         } finally {
 
         }
@@ -145,6 +149,12 @@ function startTypeSignedIn() {
             <Head>
                 <title>New Typing Session : SupaType ⚡️</title>
             </Head>
+            <Confetti
+                run={runConfetti}
+                numberOfPieces={500}
+                recycle={false}
+                colors={['#395B64', '#E8F1F2']}
+            />
             <section className={testEnded ? 'min-h-screen md:block bg-[#1B2430] blur-sm brightness-150 ' : 'min-h-screen md:block bg-[#1B2430]'}>
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
@@ -220,7 +230,6 @@ function startTypeSignedIn() {
                             <span className="text-sm font-medium transition-all group-hover:mr-4">
                                 Restart
                             </span>
-
                         </button>
                         <motion.button
                             whileHover={{ scale: 1.05 }}

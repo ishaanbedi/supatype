@@ -42,7 +42,7 @@ export default function Auth() {
                     <div className="max-w-md w-full space-y-8">
                         <div>
                             <h2 className="mt-6 text-center text-5xl tracking-tight font-bold text-[#E8F1F2]">
-                                Let&apos; get started!
+                                Let&#39;s get started!
                             </h2>
                             <p className="mt-4 text-center text-md text-[#E8F1F2]">
                                 Sign in easily using a {' '}
